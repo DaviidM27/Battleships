@@ -37,9 +37,9 @@ public:
     // Validarea pozițiilor navei
     bool isValidPosition(int row, int col, int size, bool horizontal) const {
         if (horizontal) {
-            return col + size <= grid[0].size();
+            return col + size <= static_cast<int>(grid[0].size());
         } else {
-            return row + size <= grid.size();
+            return row + size <= static_cast<int>(grid.size());
         }
     }
 
