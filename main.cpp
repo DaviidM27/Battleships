@@ -94,9 +94,11 @@ public:
     friend std::ostream& operator<<(std::ostream &out, const Player &player) {
         out << "Player: " << player.name << "\n";
         out << "Board:\n" << player.board;
+        for (const auto &ship : player.ships) {
+            out << ship << "\n";
+        }
         return out;
     }
-
     void placeShip(const Ship &ship, int row, int col, bool horizontal) {
         board.placeShip(ship, row, col, horizontal);
         ships.push_back(ship);
@@ -112,13 +114,13 @@ public:
 };
 
 int main() {
-    // Crearea jucătorilor și a tablălor de joc
+    // Crearea jucătorilor și a tablei de joc
     Player player1("Player 1", 5, 5);
     Player player2("Player 2", 5, 5);
 
     // Plasarea navelor pentru fiecare jucător
     Ship ship1(3);
-    Ship ship2(4);
+    Ship ship2(2);
     player1.placeShip(ship1, 1, 1, true); // Plasare orizontală
     player2.placeShip(ship2, 3, 3, false); // Plasare verticală
 
@@ -129,6 +131,5 @@ int main() {
     // Afișare stadiul jocului
     std::cout << player1 << "\n";
     std::cout << player2 << "\n";
-
     return 0;
 }
